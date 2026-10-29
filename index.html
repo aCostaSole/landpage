@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albert Costa-Solé</title>
+<meta name="description" content="Albert Costa-Solé, PhD. Computational engineer in Barcelona: multiphysics simulation, reactive transport, scientific software and HPC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: same short structure as the original (hero + domains panel, strip, four services, contact) in a quiet neutral palette; one muted accent used only for small marks. */
+:root{
+  --bg:#fbfbfa; --surface:#ffffff; --ink:#1a1f24; --muted:#5d656d; --line:#e3e5e7; --soft:#f2f4f5; --accent:#1f7f86; --chip:#e5f1f1; --navy:#10233a; --navy-ink:#ffffff; --navy-muted:#b7c7d5; --navy-line:rgba(255,255,255,.14); --teal:#5fd3cb;
+  --font:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121416; --surface:#181b1e; --ink:#e8eaec; --muted:#9aa2a9; --line:#2a2e33; --soft:#1d2124; --accent:#6fc9c2; --chip:#173033; --navy:#0e1c2c; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#121416; --surface:#181b1e; --ink:#e8eaec; --muted:#9aa2a9; --line:#2a2e33; --soft:#1d2124; --accent:#6fc9c2; --chip:#173033; --navy:#0e1c2c; color-scheme:dark;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-size:16px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.shell{max-width:1440px;margin:0 auto;padding-left:max(clamp(20px,4vw,56px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4vw,56px),env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+
+.site-header{background:var(--navy);color:var(--navy-ink);border-bottom:1px solid var(--navy-line)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:16px}
+.brand{font-weight:700;font-size:16px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.brand-mark{width:28px;height:28px;display:grid;place-items:center;border-radius:6px;background:var(--teal);color:var(--navy);font-size:11px;font-weight:800}
+.nav{display:flex;gap:26px;align-items:center;color:var(--navy-muted);font-size:14px;font-weight:500}
+.nav a:hover{color:var(--navy-ink)}
+.nav .pill{border:1px solid var(--navy-line);border-radius:99px;padding:8px 15px;color:var(--navy-ink)}
+.nav .pill:hover{border-color:var(--teal)}
+.hero{background:var(--navy);color:var(--navy-ink)}
+
+.hero-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:72px;align-items:center;padding-block:88px 80px}
+.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:.16em;font-weight:600;color:var(--accent)}
+.hero .eyebrow{color:var(--teal)}
+.hero h1{font-size:clamp(34px,4.2vw,62px);line-height:1.1;letter-spacing:-.04em;font-weight:700;margin:20px 0 20px}
+.hero h1 span{color:var(--teal)}
+.lead{color:var(--navy-muted);font-size:17px;line-height:1.75;max-width:62ch;margin:0}
+.lead strong{color:var(--navy-ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:12px 20px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.btn:hover{border-color:var(--ink)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hero .btn-primary,.contact .btn-primary{background:var(--teal);border-color:var(--teal);color:var(--navy)}
+.hero .btn,.contact .btn{color:var(--navy-ink);border-color:var(--navy-line)}
+.hero .btn:hover,.contact .btn:hover{border-color:var(--teal)}
+.hero .btn-primary,.contact .btn-primary{color:var(--navy)}
+.btn-primary:hover{opacity:.88}
+
+.panel{border:1px solid var(--navy-line);border-radius:12px;background:rgba(255,255,255,.04);overflow:hidden}
+.panel-head,.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;color:var(--navy-muted);font-size:11px;letter-spacing:.12em;font-weight:600;text-transform:uppercase}
+.panel-head{border-bottom:1px solid var(--navy-line)}
+.panel-foot{border-top:1px solid var(--navy-line);letter-spacing:.02em;text-transform:none;font-weight:500;font-size:12px}
+.dots{display:flex;gap:6px}.dots i{width:6px;height:6px;border-radius:50%;background:var(--navy-line)}
+.domains{list-style:none;margin:0;padding:4px 20px}
+.domains li{display:grid;grid-template-columns:8px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--navy-line)}
+.domains li:first-child{border-top:0}
+.domains li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);margin-top:7px}
+.domains b{display:block;font-size:15px;font-weight:600}
+.domains span{font-size:13px;color:var(--navy-muted);line-height:1.5}
+
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 34px;padding-block:22px;font-size:13px;font-weight:500;color:var(--muted)}
+.strip-inner .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.strip-inner span:not(.k){color:var(--ink)}
+
+.services{padding-block:88px}
+.services h2,.contact h2{font-size:clamp(26px,3vw,36px);line-height:1.2;letter-spacing:-.035em;font-weight:700;margin:14px 0 12px}
+.services .intro{color:var(--muted);font-size:16px;line-height:1.75;max-width:62ch;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.card{padding:26px 22px 8px 0;display:grid;gap:10px;align-content:start}
+.card+.card{padding-left:22px;border-left:1px solid var(--line)}
+.sym{width:40px;height:40px;border-radius:10px;background:var(--chip);color:var(--accent);display:grid;place-items:center;font-size:18px;font-weight:700;margin-bottom:8px}
+.card h3{font-size:16px;letter-spacing:-.015em;line-height:1.35}
+.card p{margin:0;font-size:14px;line-height:1.7;color:var(--muted)}
+
+.contact{background:var(--navy);color:var(--navy-ink)}
+.contact .eyebrow{color:var(--teal)}
+.contact-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding-block:72px}
+.contact p{color:var(--navy-muted);line-height:1.75;margin:0;max-width:56ch}
+.contact-box{display:grid;gap:14px;justify-items:start}
+.email{font-size:clamp(15px,2vw,18px);font-weight:600;user-select:all;overflow-wrap:anywhere}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:24px}
+.foot-inner nav{display:flex;gap:18px}
+.foot-inner a:hover{color:var(--ink)}
+
+@media (max-width:980px){
+  .hero-layout{grid-template-columns:1fr;padding-block:64px;gap:40px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card:nth-child(3){padding-left:0;border-left:0}
+  .card:nth-child(n+3){border-top:1px solid var(--line)}
+  .contact-inner{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .nav a:not(.pill){display:none}
+  .grid{grid-template-columns:1fr}
+  .card,.card+.card{padding-left:0;border-left:0}
+  .card+.card{border-top:1px solid var(--line)}
+  .services{padding-block:64px}
+  .strip-inner{justify-content:flex-start;gap:8px 20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="#top"><span class="brand-mark">AC</span>Albert Costa-Solé</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">How I can help</a>
+      <a href="https://scholar.google.com/citations?user=4sdgN-wAAAAJ&amp;hl=en" target="_blank" rel="noopener">Publications ↗</a>
+      <a class="pill" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="shell hero-layout">
+      <div>
+        <div class="eyebrow">Computational engineering · Multiphysics · HPC</div>
+        <h1>Simulation for complex physical problems, <span>from equations to decisions.</span></h1>
+        <p class="lead">I'm <strong>Albert Costa-Solé, PhD</strong>, a computational engineer based in Barcelona. I help engineering and research teams model coupled processes such as flow, reactive transport, heat and electrochemistry, and run those models reliably on HPC systems.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn" href="Albert_Costa-Sole_CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Application domains">
+        <div class="panel-head"><span>Application domains</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+        <ul class="domains">
+          <li><div><b>Nuclear waste repositories</b><span>Groundwater flow and reactive transport for safety assessment</span></div></li>
+          <li><div><b>Subsurface and geochemistry</b><span>Site-specific hydrogeological and geochemical models</span></div></li>
+          <li><div><b>Energy systems</b><span>Solid-oxide fuel cells and electrolyzers</span></div></li>
+          <li><div><b>Biomedical modelling</b><span>Tumour growth simulation</span></div></li>
+        </ul>
+        <div class="panel-foot"><span>Python · Fortran · PETSc · MPI · HPC</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="shell strip-inner">
+      <span class="k">Experience at</span><span>Amphos21</span><span>Barcelona Supercomputing Center</span><span>UPC BarcelonaTech, research &amp; teaching</span>
+    </div>
+  </div>
+
+  <section class="services" id="services">
+    <div class="shell">
+      <div class="eyebrow">How I can help</div>
+      <h2>From the physics to the production run.</h2>
+      <p class="intro">Support for projects where a physical problem needs a numerical model that is sound, fast enough and clearly explained.</p>
+      <div class="grid">
+        <article class="card"><div class="sym" aria-hidden="true">∇</div><h3>Multiphysics modelling</h3><p>Coupled flow, geochemistry and reactive transport models, set up and calibrated for your site or system.</p></article>
+        <article class="card"><div class="sym" aria-hidden="true">{ }</div><h3>Scientific software &amp; HPC</h3><p>Developing, optimizing and scaling simulation codes in Python and Fortran, with MPI and Slurm on supercomputers.</p></article>
+        <article class="card"><div class="sym" aria-hidden="true">∑</div><h3>Numerical methods</h3><p>Custom finite element formulations when standard tools fall short, and data-driven models alongside physics-based simulation.</p></article>
+        <article class="card"><div class="sym" aria-hidden="true">↗</div><h3>Training &amp; teaching</h3><p>Courses and hands-on support for technical teams, backed by university teaching in numerical methods at UPC.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="shell contact-inner">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Tell me about your modelling problem.</h2>
+        <p>Open to consulting projects, research collaborations and technical roles in simulation and scientific computing.</p>
+      </div>
+      <div class="contact-box">
+        <div class="row">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/albert-costa-sol%C3%A9-phd-38a2a178/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a>
+          <a class="btn" href="Albert_Costa-Sole_CV.pdf" target="_blank" rel="noopener">CV ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell foot-inner">
+    <span>© <span id="year">2026</span> Albert Costa-Solé, PhD · Barcelona</span>
+    <nav aria-label="Profiles">
+      <a href="https://www.linkedin.com/in/albert-costa-sol%C3%A9-phd-38a2a178/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=4sdgN-wAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org/0000-0002-3126-0855" target="_blank" rel="noopener">ORCID</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+(function(){
+  var b=document.getElementById('copy'),e=document.getElementById('email');
+  if(!b||!e)return;
+  function sel(){var r=document.createRange();r.selectNodeContents(e);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press Ctrl+C';}
+  b.addEventListener('click',function(){
+    try{navigator.clipboard.writeText(e.textContent.trim()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800)},sel)}catch(x){sel()}
+  });
+})();
+</script>
+</body>
+</html>
