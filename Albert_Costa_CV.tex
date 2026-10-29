@@ -1,0 +1,312 @@
+%=======================================================================
+%  Albert Costa Solé --- CV  (LaTeX version of the HTML/PDF layout)
+%  Compile with pdfLaTeX. Standard TeX Live packages only.
+%=======================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=0.90cm,bottom=0.80cm,left=1.30cm,right=1.30cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{charter}
+\usepackage[scaled=0.90]{helvet}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[tracking=true]{microtype}
+\usepackage{parskip}
+\usepackage{hyperref}
+
+\hypersetup{
+  hidelinks,
+  pdftitle={Albert Costa Solé --- Curriculum Vitae},
+  pdfauthor={Albert Costa Solé},
+  pdfsubject={Computational engineering, scientific software, machine learning}
+}
+
+%----------------------------- palette --------------------------------
+\definecolor{ink}{HTML}{111827}
+\definecolor{accent}{HTML}{17445C}
+\definecolor{body}{HTML}{273240}
+\definecolor{muted}{HTML}{4B5563}
+\definecolor{hair}{HTML}{DCE2E8}
+
+\color{body}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\hyphenpenalty=50
+\emergencystretch=2em
+
+\setlist[itemize]{
+  leftmargin=1.10em,
+  labelsep=0.45em,
+  itemsep=1.5pt,
+  topsep=1.5pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+\renewcommand\labelitemi{\color{accent}\textendash}
+
+\titleformat{\section}
+  {\sffamily\fontsize{9.2}{11}\selectfont\bfseries\color{accent}}
+  {}{0pt}{\lsstyle\MakeUppercase}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+
+% ruled section (all but the first one on each page)
+\newcommand{\ruledsection}[1]{%
+  \par\vspace{3pt}%
+  {\color{hair}\rule{\textwidth}{0.6pt}}%
+  \vspace{-3pt}%
+  \section{#1}%
+}
+
+\newcommand{\skill}[1]{\sffamily\fontsize{8.8}{10.5}\selectfont\color{muted}#1}
+\newcommand{\dates}[1]{{\sffamily\fontsize{8.8}{10.5}\selectfont\color{muted}#1}}
+\newcommand{\org}[1]{{\color{ink}\textbf{#1}}}
+
+\newcommand{\entrysep}{\vspace{3pt}}
+\newcommand{\pubsep}{\par\vspace{3pt}}
+
+% \role{position}{organisation}{dates}
+\newcommand{\role}[3]{%
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
+    \org{#1}, #2 & \dates{#3} \\
+  \end{tabularx}%
+  \vspace{-1.2pt}}
+
+%=======================================================================
+\begin{document}
+\fontsize{10.6}{13.4}\selectfont
+
+%============================= HEADER ==================================
+\begin{minipage}[b]{0.52\textwidth}
+  {\sffamily\fontsize{21}{22}\selectfont\bfseries\color{ink}Albert Costa Solé, PhD}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.46\textwidth}
+  \raggedleft{\sffamily\fontsize{8.7}{11.5}\selectfont\color{muted}
+  Barcelona, Spain\\
+  \href{mailto:albert.costa.sole@gmail.com}{\color{accent}albert.costa.sole@gmail.com}
+  \textcolor{hair}{$\cdot$}
+  \href{https://www.linkedin.com/in/albert-costa-sol\%C3\%A9-phd-38a2a178/}{\color{accent}LinkedIn}\\
+  \href{https://orcid.org/0000-0002-3126-0855}{\color{accent}ORCID 0000-0002-3126-0855}
+  \textcolor{hair}{$\cdot$}
+  \href{https://scholar.google.com/citations?user=4sdgN-wAAAAJ&hl=es}{\color{accent}Google Scholar}
+  \textcolor{hair}{$\cdot$}
+  \href{https://www.researchgate.net/profile/Albert-Costa-Sole}{\color{accent}ResearchGate}}
+\end{minipage}
+
+\vspace{3.0pt}
+{\sffamily\fontsize{8.6}{10.5}\selectfont\color{accent}\lsstyle
+	Computational Engineer \& Scientific Software
+	\ \textcolor{hair}{$\cdot$}\  Multiphysics \& HPC}\\[3.0pt]
+{\color{accent}\rule{\textwidth}{1.2pt}}
+%============================= PROFILE =================================
+\section{Profile}
+Computational engineer with a PhD in numerical methods and 10+ years of experience in multiphysics modelling, high-performance numerical simulation and scientific software development. Technical background includes porous-media flow and reactive transport, electrochemical systems and biomedical modelling, with experience developing and running large-scale simulations on HPC systems. More recently, completed an MSc in Artificial Intelligence focused on machine learning, data-driven modelling and their integration with physics-based simulation.
+
+%========================== TECHNICAL SKILLS ===========================
+\ruledsection{Technical Skills}
+\begin{tabularx}{\textwidth}{@{}>{\sffamily\fontsize{8.8}{10.8}\selectfont\color{muted}}l@{\hspace{0.55cm}}>{\raggedright\arraybackslash}X@{}}
+%  Languages            & Python, Fortran, Matlab \\[1.5pt]
+%  Scientific computing & Numerical methods, finite elements, multiphysics coupling, reactive transport, porous media \\[1.5pt]
+%  Machine learning     & Supervised and unsupervised learning, deep learning, model selection and validation, data-driven modelling; scikit-learn, pandas, PyTorch (academic training) \\[1.5pt]
+%  Software engineering & Linux, Git, CI/CD, TDD; Slurm job and resource management (queues, cores, tasks), MPI \\[1.5pt]
+%  Meshing              & GiD, gmsh, ANSA; ParaView post-processing \\[1.5pt]
+%  Simulation codes     & \href{https://bitbucket.org/pflotran/pflotran/src/master/}{\color{accent}PFLOTRAN} (contributor), PETSc-based solvers \\
+  
+  
+Programming                 & Python, Fortran, MATLAB \\[1.5pt]
+Scientific computing        & Numerical methods, finite elements, multiphysics, porous-media flow, reactive transport \\[1.5pt]
+AI \& machine learning      & Supervised and unsupervised learning, deep learning, model selection and validation, data-driven modelling; scikit-learn, pandas, PyTorch (academic training) \\[1.5pt]
+HPC \& software engineering & Linux, Git, CI/CD, TDD, MPI, Slurm; large-scale simulation workflows on HPC systems \\[1.5pt]
+Meshing \& post-processing  & GiD, gmsh, ANSA, ParaView \\[1.5pt]
+Simulation software         & PFLOTRAN (contributor), PETSc-based solvers, Alya \\
+  
+\end{tabularx}
+
+%======================= PROFESSIONAL EXPERIENCE =======================
+\ruledsection{Professional Experience}
+\vspace{-5.5pt}
+
+\role{Senior Consultant}{Amphos21, Barcelona}{Aug 2024 -- Present}
+\begin{itemize}
+	
+%	\item \org{Design and develop conceptual and numerical models} for coupled flow, geochemistry and reactive transport applied to far-field and near-field assessment of nuclear waste repositories. Implement and run production-scale simulations on supercomputers (LUMI--JURECA), working closely with hydrogeologists and geochemists to integrate site-specific processes and spatial variability, assess modelling assumptions, and ensure numerical stability and reproducibility.
+%	
+%	\item \org{Develop scientific software and HPC simulation workflows} in Python and Fortran, with contributions merged into the master branch of \href{https://bitbucket.org/pflotran/pflotran/src/master/}{\color{accent}PFLOTRAN}, an open-source HPC reactive transport code. Built a one-script pipeline that compiles the solver stack for any requested branch, streamlining onboarding, development workflows and knowledge transfer across the team.
+%	
+%	\item \org{Provide technical leadership within the simulation team} by mentoring and onboarding new colleagues, leading regular knowledge-sharing sessions on PFLOTRAN developments, and coordinating the Amphos21--UPC technical contribution to an R\&D proposal for Shell combining numerical simulation, Python-based data processing and interpretable machine learning.
+
+\item \org{Design and run production-scale multiphysics simulations}
+for nuclear waste repository performance assessment, coupling flow,
+geochemistry and reactive transport on LUMI and JURECA and integrating
+site-specific hydrogeological and geochemical processes.
+
+\item \org{Develop and optimize scientific software} in Python and Fortran,
+with contributions merged into PFLOTRAN's master branch. Built a reproducible
+one-script workflow that automates the PETSc/PFLOTRAN solver-stack compilation
+process for specialists across the team.
+
+\item \org{Improved the performance of PFLOTRAN's Nernst--Planck-based
+	electromigration implementation}, reducing runtime from approximately
+60 minutes to 10 minutes ($\sim$6$\times$ speed-up) in an internal project
+case; further validation on larger project cases is ongoing.
+
+\item \org{Provide technical leadership and client-facing delivery}:
+onboarded 3 colleagues in numerical modelling, coordinate regular PFLOTRAN
+technical meetings, and delivered a 3-day technical training course in
+Tokyo for Obayashi Corporation. Conceived and coordinated a predictive-modelling R\&D
+proposal involving Amphos21, UPC and RSK, submitted to Shell and currently
+under evaluation.
+
+	
+\end{itemize}
+
+\entrysep
+\role{Recognized Researcher (R2) / Research Engineer}{Barcelona Supercomputing Center (BSC)}{Apr 2022 -- Jul 2024}
+\begin{itemize}
+%  \item \org{Built high-fidelity multiphysics models from scratch} for solid-oxide fuel cells and electrolyzers in a European R\&D consortium, coupling electrochemical, thermal and fluid-flow phenomena for large-scale HPC simulation on MareNostrum V using BSC's in-house multiphysics framework (Alya).
+%  \item \org{Developed adaptive numerical methods} and acted as the team's technical point of contact with the project coordinator (IREC) for the high-fidelity simulations work package, and represented BSC in consortium meetings with the project partners.
+
+\item \org{Developed high-fidelity electrochemical multiphysics models}
+for solid-oxide fuel cells and electrolyzers, coupling electrochemical,
+thermal and fluid-flow processes within BSC's Alya framework.
+
+\item \org{Designed and implemented adaptive numerical methods}
+for large-scale simulations on MareNostrum, contributing scientific software
+to production HPC workflows and to peer-reviewed research on electrochemical
+transport.
+
+\item \org{Served as BSC's technical point of contact}
+for the high-fidelity simulation work package of a European R\&D consortium,
+coordinating technical interaction with project partners.
+
+\end{itemize}
+
+\entrysep
+\role{Software Engineer}{Lifeware AG, Barcelona}{Jun 2021 -- Mar 2022}
+\begin{itemize}
+  \item \org{Developed and maintained production software} for life-insurance applications in Smalltalk, applying continuous integration and test-driven development to improve code quality and reliability.
+\end{itemize}
+
+\entrysep
+\role{Postdoctoral \& PhD Researcher}{Universitat Politècnica de Catalunya (UPC)}{Jan 2016 -- May 2021}
+\begin{itemize}
+%  \item \org{Postdoc (2020--2021):} high-order numerical formulations for computational modelling of glioblastoma growth.
+%  \item \org{PhD (2016--2020):} high-order HDG formulations and implicit Runge--Kutta schemes for single- and multiphase flow through porous media.
+\item \org{Postdoctoral researcher (2020--2021):} developed high-order numerical formulations and simulation software for computational modelling of glioblastoma growth.
+\item \org{PhD researcher (2016--2020):} developed high-order HDG and implicit Runge--Kutta methods for single- and multiphase porous-media flow.
+\end{itemize}
+
+\newpage
+%=========================== PAGE 2 HEADER =============================
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+  {\sffamily\fontsize{11}{13}\selectfont\bfseries\color{ink}Albert Costa Solé, PhD} & \dates{Page 2 of 2} \\
+\end{tabularx}
+\vspace{2pt}
+{\color{accent}\rule{\textwidth}{1.2pt}}
+
+%======================== SELECTED PUBLICATIONS ========================
+\section{Selected Publications}
+
+{\sffamily\fontsize{9.5}{11.3}\selectfont\color{muted}
+	Six peer-reviewed journal articles and book chapters in total, and 10+
+	contributions to international conferences (EHEC, ECCOMAS, WCCM, ICIAM).
+	Full list:
+	\href{https://orcid.org/0000-0002-3126-0855}
+		{\color{accent}ORCID}
+	\textcolor{hair}{$\cdot$}
+	\href{https://scholar.google.com/citations?user=4sdgN-wAAAAJ&hl=es}
+		{\color{accent}Google Scholar}.}
+
+\vspace{4pt}
+
+\org{Costa-Solé, A.} et al. (2026).
+An adaptive numerical framework for the electro-chemical transport in direct internal reforming solid oxide fuel cells (DIR-SOFC).
+\textit{International Journal for Numerical Methods in Engineering}.
+\href{https://doi.org/10.1002/nme.70310}
+{\color{accent}doi.org/10.1002/nme.70310}
+
+\pubsep
+
+\org{Costa-Solé, A.} et al. (2026).
+High-performance computing for subsurface flow and transport modelling of Olkiluoto.
+\textit{Procedia Computer Science}, 286, 48--57.
+\href{https://doi.org/10.1016/j.procs.2026.08.018}
+{\color{accent}doi.org/10.1016/j.procs.2026.08.018}
+
+\pubsep
+
+\org{Costa-Solé, A.}, Ruiz-Gironés, E., Sarrate, J. (2021).
+High-order HDG formulation with fully implicit temporal schemes for the simulation of two-phase flow through porous media.
+\textit{International Journal for Numerical Methods in Engineering}, 122(14), 3583--3612.
+\href{https://doi.org/10.1002/nme.6674}
+{\color{accent}doi.org/10.1002/nme.6674}
+
+
+%============================ EDUCATION ================================
+\ruledsection{Education}
+\vspace{-5.5pt}
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+	
+	\org{MSc in Artificial Intelligence}, Universidad Internacional de La Rioja (UNIR).
+	Advanced training in machine learning, deep learning, data-driven modelling, optimization and artificial intelligence for complex computational problems.
+	\textbf{Minor Thesis}: Predicción y diagnóstico
+	del Trastorno Obsesivo-
+	Compulsivo mediante técnicas
+	de Inteligencia Artificial
+	aplicadas al análisis de
+	experiencias vitales estresantes (UNIR - Hospital Universitari de Bellvitge).
+	& \dates{2025} \\[2pt]
+	
+	\org{PhD in Civil Engineering}, Universitat Politècnica de Catalunya (UPC), \textit{Cum laude}.
+	\textbf{Thesis}: high-order hybridizable discontinuous Galerkin formulations with fully implicit Runge--Kutta schemes for single- and two-phase flow through porous media.
+	& \dates{2020} \\[2pt]
+	
+	\org{MSc in Geotechnical Engineering}, UPC
+     \&
+	\org{MSc in Mineral Resources \& Geological Hazards}, Universitat de Barcelona (UB)--Universitat Autonoma de Barcelona (UAB).
+	Advanced interdisciplinary training in geotechnical engineering, hydrogeology, geomechanics, geochemistry, geological modelling and subsurface processes, with a strong emphasis on numerical modelling.
+	& \dates{2015} \\[2pt]
+	
+	\org{BSc in Geological Engineering}, UPC--UB.
+	Engineering degree combining geotechnics, hydrogeology, numerical modelling, subsurface processes and environmental engineering, with a strong focus on quantitative analysis and computational modelling.
+	& \dates{2013} \\
+	
+\end{tabularx}
+%\ruledsection{Education}
+%\begin{tabularx}{\textwidth}{@{}X r@{}}
+%  \org{MSc in Artificial Intelligence}, Universidad Internacional de La Rioja (UNIR). Advanced training in machine learning, deep learning, data-driven modelling, optimization, and artificial intelligence applied to complex computational problems. \textbf{Thesis}: supervised classification and clustering models to predict obsessive-compulsive disorder subtypes from clinical and life-event data (Hospital Universitari de Bellvitge) & \dates{2026} \\[2pt]
+%  \org{PhD in Civil Engineering}, Universitat Politècnica de Catalunya (UPC), \textit{Cum laude}. \textbf{Thesis}: high-order hybridizable discontinuous Galerkin formulations with fully implicit Runge--Kutta schemes for single- and two-phase flow through porous media & \dates{2020} \\[2pt]
+%  \org{MSc in Geotechnical Engineering}, UPC \textcolor{hair}{$\cdot$} \org{MSc in Mineral Resources \& Geological Hazards}, Universitat de Barcelona (UB)-- Universitat Autonoma de Barcelona (UAB). Strong interdisciplinary background in geotechnical engineering, geological modelling, hydrogeology, geomechanics, geochemistry, and geological risk assessment, with a focus on numerical modelling of subsurface processes.& \dates{2015} \\[2pt]
+%  \org{BSc in Geological Engineering}, UPC--UB Multidisciplinary engineering background combining geology, geotechnics, hydrogeology, numerical modelling and environmental engineering, with a strong focus on understanding and modelling subsurface processes. & \dates{2013} \\
+%\end{tabularx}
+
+%================= TEACHING, SUPERVISION & LANGUAGES ===================
+\ruledsection{Teaching, Supervision \& Languages}
+\org{Adjunct Lecturer, UPC} \dates{(2022--2023, 2026--present)}: statistics, probability, numerical methods, MATLAB and R programming.\\[3pt]
+\org{Co-supervisor of an MSc thesis} \dates{(BSC--UPC, 2024)}: high-order continuous Galerkin formulation for glioblastoma growth simulation. \href{https://hdl.handle.net/2117/409235}{\color{accent}hdl.handle.net/2117/409235}\\[3pt]
+\org{UPC internal research grants}: geostatistical study of the Salar de Atacama with direct involvement with the client (SQM); teaching support.\\[3pt]
+\org{Ongoing collaborations}: development of a simulation code for metamaterials with two UPC faculty members, and an extension of the MSc thesis work with a psychiatrist at Hospital Universitari de Bellvitge.\\[3pt]
+\org{Catalan}, \org{Spanish}: native. \textcolor{hair}{$\cdot$} \org{English}: advanced professional proficiency.
+
+%================= CERTIFICATIONS & TRAINING ============================
+
+\ruledsection{Certifications \& Training}
+
+\org{NVIDIA Deep Learning Institute},
+\href{https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-AC-10+V1}
+     {\color{accent}Fundamentals of Accelerated Computing with CUDA Python}
+\dates{In progress, 2026}
+
+\par\vspace{6pt}
+
+\org{University of Colorado System / Coursera},
+\href{https://www.coursera.org/learn/kalman-filter-boot-camp-state-estimation}
+     {\color{accent}Kalman Filter Boot Camp (and State Estimation)}
+\dates{In progress, 2026}
+
+\end{document}
